@@ -13,6 +13,13 @@ const Navbar = () => {
 		setDrawerOpen(!isDrawerOpen);
 	};
 
+	const [accordionOpen, setAccordionOpen] = useState(false);
+
+	const handleAccordionToggle = (e) => {
+		e.stopPropagation();
+		setAccordionOpen(!accordionOpen);
+	};
+
 	const [active, setActive] = useState(false);
 	const [open, setOpen] = useState(false);
 
@@ -45,10 +52,10 @@ const Navbar = () => {
 
 	return (
 		<main className=''>
-			{/* MD SCREEN*/}
 			<section
 				className={active || pathname !== "/" ? "navbar active" : "navbar"}>
-				<div className='flex flex-row justify-between p-4 font-lato w-full'>
+				{/* MD SCREEN*/}
+				<div className='flex flex-row justify-between p-4 font-lato w-full bg-zinc-50'>
 					{/* LOGO */}
 					<div className='text-4xl font-black'>
 						<Link className='flex' to='/'>
@@ -103,7 +110,7 @@ const Navbar = () => {
 								<button>
 									<Link to='/login'>Sign In</Link>
 								</button>
-								<button className='hover:bg-primary1 py-[0.4rem] px-4 rounded-md border'>
+								<button className='hover:bg-primary1 py-[0.4rem] hover:text-white px-4 rounded-md border animate'>
 									<Link to='/register'>Join</Link>
 								</button>
 							</>
@@ -127,7 +134,7 @@ const Navbar = () => {
 			</section>
 
 			{/* SM SCREEN */}
-			<section className='md:hidden flex items-center justify-between px-6 py-4 sticky z-50 border-b text-accent bg-white font-lato'>
+			<section className='md:hidden flex items-center justify-between px-6 py-4 sticky z-50 border-b text-accent bg-zinc-50 font-lato'>
 				<div className=''>
 					{/* LOGO */}
 
@@ -142,9 +149,9 @@ const Navbar = () => {
 				{/* Mobile Drawer */}
 				{isDrawerOpen && (
 					<div
-						className='fixed inset-0 z-30 bg-black bg-opacity-50'
+						className='fixed inset-0 z-30 bg-black bg-opacity-50 '
 						onClick={toggleDrawer}>
-						<div className='fixed inset-y-0 left-0 max-w-xs w-full bg-white p-8 '>
+						<div className='fixed inset-y-0 left-0 max-w-xs w-full bg-zinc-100 p-8 '>
 							{/* Drawer content */}
 							<div className='flex justify-end'>
 								<button
@@ -156,20 +163,93 @@ const Navbar = () => {
 							</div>
 
 							{/* Drawer links */}
-							<nav className='mt-y overflow-auto h-[80vh]'>
-								<ul className=''>
-									<li className='text-lg mb-4'>
-										<button className='button py-1 px-4 '>Join Fiverr</button>
+							<nav className='my-4 overflow-auto h-[80vh]'>
+								<ul className='flex flex-col'>
+									<li className='text-lg my-2'>
+										{!currentUser ? (
+											<Link to='/register' className='button py-1 px-4'>
+												Join Fiverr
+											</Link>
+										) : (
+											<p></p>
+										)}
 									</li>
 									<div className='text-base flex flex-col gap-2'>
-										<Link to='/login' className='cursor-default'>
-											Sign in
+										<Link
+											to='/'
+											className='cursor-pointer'
+											onClick={toggleDrawer}>
+											Browse categories
 										</Link>
-										<li className='cursor-default'>Browse categories</li>
-										<li className='cursor-default'>Explore</li>
-										<li className='cursor-default'>Business solutions</li>
+
+										<Link
+											to='/'
+											className='cursor-pointer'
+											onClick={toggleDrawer}>
+											Explore
+										</Link>
+
+										<Link
+											to='/'
+											className='cursor-pointer'
+											onClick={toggleDrawer}>
+											Business solutions
+										</Link>
+
+										{currentUser ? (
+											<div
+												className={`accordion ${accordionOpen ? "open" : ""}`}>
+												<button
+													onClick={handleAccordionToggle}
+													className='flex items-center gap-8'>
+													<span className='flex items-center gap-2 border justify-between w-full py-1 px-2 rounded-lg text-white bg-primary1'>
+														<img
+															src={currentUser?.img || "/noavatar.jpg"}
+															alt='user image'
+															className='w-8 h-8 object-cover rounded-full'
+														/>
+														<p>{currentUser.username}</p>
+													</span>
+												</button>
+
+												{accordionOpen && (
+													<div className='flex flex-col items-start py-1 px-3 my-1 text-sm bg-primary1 text-zinc-50'>
+														{currentUser.isSeller && (
+															<div className='flex flex-col '>
+																<Link to='/mygigs' className='drawer-link'>
+																	Gigs
+																</Link>
+																<Link to='/add' className='drawer-link'>
+																	Add New Gig
+																</Link>
+															</div>
+														)}
+														<div className='flex flex-col '>
+															<Link className='drawer-link' to='/orders'>
+																Orders
+															</Link>
+															<Link className='drawer-link' to='/messages'>
+																Messages
+															</Link>
+															<Link
+																className='drawer-link'
+																onClick={handleLogout}>
+																Logout
+															</Link>
+														</div>
+													</div>
+												)}
+											</div>
+										) : (
+											<div>
+												<Link
+													to='/login'
+													className='cursor-pointer hover:underline'>
+													Sign in
+												</Link>
+											</div>
+										)}
 									</div>
-									{/* Add more menu items as needed */}
 								</ul>
 							</nav>
 						</div>
@@ -183,7 +263,7 @@ const Navbar = () => {
 					</Link>
 				</div>
 
-				<p>Join</p>
+				{currentUser ? <p></p> : <Link to='/register'>Join</Link>}
 			</section>
 		</main>
 	);

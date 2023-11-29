@@ -41,7 +41,7 @@ export const updateConversation = async (req, res, next) => {
 export const getSingleConversation = async (req, res, next) => {
 	const conversation = await Conversation.findOne({ id: req.params.id });
 	if (!conversation) return next(createError(404, "Not found!"));
-	res.status(200).send(updatedConversation);
+	res.status(200).send(conversation);
 	try {
 	} catch (err) {
 		next(err);

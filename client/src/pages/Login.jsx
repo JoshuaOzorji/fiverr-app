@@ -2,6 +2,7 @@ import { useState } from "react";
 import newRequest from "../../utils/newRequest.js";
 
 import { useNavigate } from "react-router-dom";
+import BreadCrumb from "../components/BreadCrumb.jsx";
 
 function Login() {
 	const [username, setUsername] = useState("");
@@ -21,8 +22,12 @@ function Login() {
 		}
 	};
 	return (
-		<main className='padding font-lato'>
-			<div className='w-full md:w-[35%] mx-auto my-4 md:my-10'>
+		<main className='padding py-2'>
+			{/* BREADCRUMB */}
+			<span className=''>
+				<BreadCrumb breadcrumbs={[{ title: "Login", link: "/login" }]} />
+			</span>
+			<div className='w-full md:w-[35%] mx-auto my-4 md:my-10 h-[50vh]'>
 				<form onSubmit={handleSubmit} className='flex flex-col gap-3 md:gap-6'>
 					{/* HEADING */}
 					<h1 className='text-center font-bold'>Sign in</h1>

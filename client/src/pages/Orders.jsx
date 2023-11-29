@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import { HiMail } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import BreadCrumb from "../components/BreadCrumb";
 
 const Orders = () => {
 	const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -35,7 +36,11 @@ const Orders = () => {
 	};
 
 	return (
-		<section className='padding my-4'>
+		<section className='padding my-2'>
+			{/* BREADCRUMB */}
+			<span className=''>
+				<BreadCrumb breadcrumbs={[{ title: "Orders", link: "/orders" }]} />
+			</span>
 			{isLoading ? (
 				"Loading..."
 			) : error ? (

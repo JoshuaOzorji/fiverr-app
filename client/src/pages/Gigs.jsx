@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import GigCard from "../components/GigCard.jsx";
-import { AiFillHome } from "react-icons/ai";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest.js";
 import { IoIosArrowDown } from "react-icons/io";
+import BreadCrumb from "../components/BreadCrumb.jsx";
 
 const Gigs = () => {
 	const [sort, setSort] = useState("sales");
@@ -19,7 +19,7 @@ const Gigs = () => {
 		queryFn: () =>
 			newRequest
 				.get(
-					`/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`,
+					`/gigs?${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`,
 				)
 				.then((res) => {
 					return res.data;
@@ -59,17 +59,15 @@ const Gigs = () => {
 	};
 
 	return (
-		<main>
+		<main className='padding py-2'>
 			{/* BREADCRUMB */}
-			<div className='flex items-center gap-x-2 padding'>
-				<Link to='/'>
-					<AiFillHome className='w-3 h-3 md:w-4 md:h-4' />
-				</Link>{" "}
-				{`>`} <p className='text-xs '>Graphics & Design</p>
-			</div>
-			<main className='font-lato padding my-4 md:my-8'>
+			<span className=''>
+				<BreadCrumb breadcrumbs={[{ title: "Gigs", link: "/gigs" }]} />
+			</span>
+
+			<div className='font-lato my-4 md:my-8'>
 				<section className='flex flex-col gap-2 md:gap-4 '>
-					<p className='font-bold text-2xl md:text-4xl'>{`Graphics & Design`}</p>
+					<p className='font-bold text-2xl md:text-4xl'>{`All Gigs`}</p>
 
 					<div className='flex flex-col gap-4 text-sm border p-2'>
 						<div className='left flex flex-col md:flex-row gap-2 border p-2'>
@@ -145,7 +143,7 @@ const Gigs = () => {
 							: data && data.map((gig) => <GigCard key={gig._id} item={gig} />)}
 					</div>
 				</section>
-			</main>
+			</div>
 		</main>
 	);
 };

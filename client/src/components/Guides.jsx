@@ -34,7 +34,7 @@ const Guides = () => {
 						1280: { slidesPerView: 3, spaceBetween: 16 },
 					}}
 					className='mySwiper'>
-					<button className='swiper-button-prev button-prev-slide text-accent bg-zinc-50 rounded-full p-6 font-bold shadow-lg'></button>
+					<button className='swiper-button-prev button-prev-slide text-accent bg-zinc-50 rounded-full p-5 font-bold shadow-lg'></button>
 					{guides.map((card) => (
 						<SwiperSlide key={card.id}>
 							<div className=''>
@@ -50,7 +50,7 @@ const Guides = () => {
 						</SwiperSlide>
 					))}
 
-					<button className='swiper-button-next button-next-slide text-accent bg-zinc-50 rounded-full p-6 font-bold shadow-lg'></button>
+					<button className='swiper-button-next button-next-slide text-accent bg-zinc-50 rounded-full p-5 font-bold shadow-lg'></button>
 				</Swiper>
 			</div>
 		</main>

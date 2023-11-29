@@ -76,11 +76,16 @@ const CheckoutForm = () => {
 	};
 
 	return (
-		<div>
+		<div className='my-8 w-[80%] md:w-[40%] mx-auto font-lato'>
 			<form id='payment-form' onSubmit={handleSubmit}>
 				<PaymentElement id='payment-element' options={paymentElementOptions} />
-				<button disabled={isLoading || !stripe || !elements} id='submit'>
-					<span id='button-text'>
+				<button
+					disabled={isLoading || !stripe || !elements}
+					id='submit'
+					className='my-4'>
+					<span
+						id='button-text'
+						className='button px-2 py-1 my-4 text-sm md:text-base'>
 						{isLoading ? (
 							<div className='spinner' id='spinner'></div>
 						) : (

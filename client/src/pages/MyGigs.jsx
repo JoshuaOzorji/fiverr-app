@@ -3,6 +3,7 @@ import { TiDelete } from "react-icons/ti";
 import getCurrentUser from "../../utils/getCurrentUser";
 import newRequest from "../../utils/newRequest";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import BreadCrumb from "../components/BreadCrumb";
 
 const MyGigs = () => {
 	const currentUser = getCurrentUser();
@@ -31,7 +32,12 @@ const MyGigs = () => {
 	};
 	return (
 		<main>
-			<section className='padding'>
+			<section className='padding py-2'>
+				{/* BREADCRUMB */}
+				<span className=''>
+					<BreadCrumb breadcrumbs={[{ title: "My Gigs", link: "/mygigs" }]} />
+				</span>
+
 				<div className='flex items-center justify-between my-6'>
 					<h1 className='text-lg md:text-3xl font-bold'>Gigs</h1>
 

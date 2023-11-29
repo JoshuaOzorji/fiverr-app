@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import upload from "../../utils/upload.js";
 import newRequest from "../../utils/newRequest.js";
+import BreadCrumb from "../components/BreadCrumb.jsx";
 function Register() {
 	const [file, setFile] = useState(null);
 	const [user, setUser] = useState({
@@ -46,7 +47,11 @@ function Register() {
 	console.log(user);
 
 	return (
-		<main className='padding font-lato'>
+		<main className='padding font-lato py-2'>
+			{/* BREADCRUMB */}
+			<span className=''>
+				<BreadCrumb breadcrumbs={[{ title: "Register", link: "/register" }]} />
+			</span>
 			<section className='my-4 md:my-10'>
 				<h1 className='text-center text-base md:text-lg font-bold mb-2'>
 					Create a new account

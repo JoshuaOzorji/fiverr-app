@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { AiFillHome } from "react-icons/ai";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
+import BreadCrumb from "../components/BreadCrumb";
 
 const Message = () => {
 	const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -37,14 +37,11 @@ const Message = () => {
 	};
 
 	return (
-		<main className='padding'>
+		<main className='padding py-2'>
 			{/* BREADCRUMB */}
-			<div className='flex items-center gap-x-2'>
-				<Link to='/messages'>
-					<AiFillHome className='w-3 h-3 md:w-4 md:h-4' />
-				</Link>{" "}
-				{`>`} <p className='text-xs '>Message</p>
-			</div>
+			<span className=''>
+				<BreadCrumb breadcrumbs={[{ title: "Message", link: "#" }]} />
+			</span>
 			<section className='md:w-[70%] md:mx-auto'>
 				{isLoading ? (
 					"Loading..."

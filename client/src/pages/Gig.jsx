@@ -1,4 +1,3 @@
-import { AiFillHome } from "react-icons/ai";
 import { Link, useParams } from "react-router-dom";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,6 +8,8 @@ import { LiaSyncSolid } from "react-icons/lia";
 import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../components/Reviews";
+import BreadCrumb from "../components/BreadCrumb";
+// import { IoIosArrowBack } from "react-icons/io";
 
 const Gig = () => {
 	const { id } = useParams();
@@ -38,27 +39,28 @@ const Gig = () => {
 		enabled: !!userId,
 	});
 
-	console.log(dataUser?.img);
 	return (
-		<div>
+		<div className='padding py-2'>
 			{/* BREADCRUMB */}
-			<div className='font-lato flex items-center gap-x-2 padding'>
-				<Link to='/'>
-					<AiFillHome className='w-3 h-3 md:w-4 md:h-4' />
-				</Link>{" "}
-				{`>`} <p className='text-xs '>Graphics & Design</p>
-			</div>
+			<span className=''>
+				<BreadCrumb
+					breadcrumbs={[{ title: "Gigs", link: "/gigs" }]}
+					dynamicTitle={data?.title}
+				/>
+			</span>
+
 			{isLoading ? (
 				"Loading..."
 			) : error ? (
 				"Something went wrong!"
 			) : (
-				<main className='padding py-6 flex flex-col md:flex-row gap-20 font-lato text-accent relative'>
+				<main className='py-6 flex flex-col md:flex-row gap-20 font-lato text-accent relative'>
 					{/* LEFT */}
 					<section className='md:w-[60%] border p-4'>
 						<h1 className='font-bold text-xl md:text-3xl mb-4'>
 							{data?.title}
 						</h1>
+
 						<div>
 							{isLoadingUser ? (
 								"Loading"
@@ -104,8 +106,8 @@ const Gig = () => {
 								</SwiperSlide>
 							))}
 
-							<button className='swiper-button-prev button-prev-slide text-accent bg-zinc-50 rounded-full p-6 font-bold shadow-lg'></button>
-							<button className='swiper-button-next button-next-slide text-accent bg-zinc-50 rounded-full p-6 font-bold shadow-lg'></button>
+							<button className='swiper-button-prev button-prev-slide text-accent bg-zinc-50 rounded-full p-[14px] md:p-5 font-bold shadow-lg'></button>
+							<button className='swiper-button-next button-next-slide text-accent bg-zinc-50 rounded-full p-[14px] md:p-5  font-bold shadow-lg'></button>
 						</Swiper>
 
 						<h2 className='text-xl font-bold'>About This Gig</h2>

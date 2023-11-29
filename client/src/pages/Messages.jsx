@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import moment from "moment";
+import BreadCrumb from "../components/BreadCrumb";
 
 const Messages = () => {
 	const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -30,14 +31,19 @@ const Messages = () => {
 	};
 
 	return (
-		<section className='padding my-4'>
+		<section className='padding my-2'>
+			{/* BREADCRUMB */}
+			<span className=''>
+				<BreadCrumb breadcrumbs={[{ title: "Messages", link: "/messages" }]} />
+			</span>
+
 			{isLoading ? (
 				"Loading"
 			) : error ? (
 				"Something went wrong"
 			) : (
 				<div>
-					<div className='text-lg md:text-2xl font-bold'>
+					<div className='text-lg md:text-2xl font-bold my-3'>
 						<h1>Messages</h1>
 					</div>
 

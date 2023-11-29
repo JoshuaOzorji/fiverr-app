@@ -1,7 +1,6 @@
 import { carousel } from "../data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
@@ -44,8 +43,8 @@ const Slide = () => {
 							</div>
 						</SwiperSlide>
 					))}
-					<button className='swiper-button-prev button-prev-slide text-accent bg-zinc-50 rounded-full p-6 font-bold shadow-lg'></button>
-					<button className='swiper-button-next button-next-slide text-accent bg-zinc-50 rounded-full p-6 font-bold shadow-lg'></button>
+					<button className='swiper-button-prev button-prev-slide text-accent bg-zinc-50 rounded-full p-5 font-bold shadow-lg'></button>
+					<button className='swiper-button-next button-next-slide text-accent bg-zinc-50 rounded-full p-5 font-bold shadow-lg'></button>
 				</Swiper>
 			</div>
 		</main>
