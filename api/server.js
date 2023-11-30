@@ -26,9 +26,19 @@ const connect = async () => {
 	}
 };
 
+// app.use(
+// 	cors({ origin: "https://fiverr-appp.netlify.app/", credentials: true }),
+// );
+
 app.use(
-	cors({ origin: "https://fiverr-appp.netlify.app/", credentials: true }),
+	cors({
+		origin: "https://fiverr-appp.netlify.app",
+		methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+		credentials: true,
+		allowedHeaders: "Content-Type,Authorization",
+	}),
 );
+
 app.use(express.json());
 app.use(cookieParser());
 
