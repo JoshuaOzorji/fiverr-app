@@ -1,9 +1,8 @@
 import { AiFillHome } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
+/* eslint-disable */
 const BreadCrumb = ({ breadcrumbs, dynamicTitle }) => {
-	console.log("dynamicTitle:", dynamicTitle);
-
 	return (
 		<main>
 			<div className='font-lato text-accent'>
