@@ -4,8 +4,14 @@ import getCurrentUser from "../../utils/getCurrentUser";
 import newRequest from "../../utils/newRequest";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import BreadCrumb from "../components/BreadCrumb";
+import { useEffect } from "react";
 
 const MyGigs = () => {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const currentUser = getCurrentUser();
 
 	const queryClient = useQueryClient();

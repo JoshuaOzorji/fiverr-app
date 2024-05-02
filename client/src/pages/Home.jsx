@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Business from "../components/Business";
 import Categories from "../components/Categories";
 import Guides from "../components/Guides";
@@ -9,6 +10,11 @@ import Slide from "../components/Slide";
 import TrustedBy from "../components/TrustedBy";
 
 const Home = () => {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	return (
 		<main className=''>
 			<HeroSlider />

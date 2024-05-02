@@ -3,8 +3,14 @@ import newRequest from "../../utils/newRequest";
 import { HiMail } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import BreadCrumb from "../components/BreadCrumb";
+import { useEffect } from "react";
 
 const Orders = () => {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 	const navigate = useNavigate();

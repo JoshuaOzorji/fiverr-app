@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import upload from "../../utils/upload.js";
 import newRequest from "../../utils/newRequest.js";
 import BreadCrumb from "../components/BreadCrumb.jsx";
+
 function Register() {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const [file, setFile] = useState(null);
 	const [user, setUser] = useState({
 		username: "",

@@ -2,8 +2,14 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import BreadCrumb from "../components/BreadCrumb";
+import { useEffect } from "react";
 
 const Message = () => {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 	const { id } = useParams();

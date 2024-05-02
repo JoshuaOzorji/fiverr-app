@@ -5,6 +5,11 @@ import lottie from "lottie-web";
 import success from "../success.json";
 
 const Success = () => {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const container = useRef(null);
 
 	const { search } = useLocation();

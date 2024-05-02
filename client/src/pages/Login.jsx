@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import newRequest from "../../utils/newRequest.js";
 
 import { useNavigate } from "react-router-dom";
 import BreadCrumb from "../components/BreadCrumb.jsx";
 
 function Login() {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState(null);

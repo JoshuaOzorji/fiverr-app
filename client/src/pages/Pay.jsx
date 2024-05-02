@@ -4,12 +4,16 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useParams } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import CheckoutForm from "../components/CheckoutForm";
-import process from "process";
 
 const stripePromise = loadStripe(
 	"pk_test_51O1cxFLkuwxfI39zrWJQ9LlzGAIj2KOtdID3dpzDbtZEzryKxSJhkcKU23hLNlDgRpy6da2mmjSkJYguPYUSOmHh00XEMU0ktt",
 );
 const Pay = () => {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const [clientSecret, setClientSecret] = useState("");
 	const { id } = useParams();
 

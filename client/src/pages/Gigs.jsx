@@ -7,6 +7,11 @@ import { IoIosArrowDown } from "react-icons/io";
 import BreadCrumb from "../components/BreadCrumb.jsx";
 
 const Gigs = () => {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const [sort, setSort] = useState("sales");
 	const [open, setOpen] = useState(false);
 	const minRef = useRef();

@@ -9,9 +9,15 @@ import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../components/Reviews";
 import BreadCrumb from "../components/BreadCrumb";
+import { useEffect } from "react";
 // import { IoIosArrowBack } from "react-icons/io";
 
 const Gig = () => {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const { id } = useParams();
 
 	console.log(id);

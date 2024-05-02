@@ -3,8 +3,14 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
 import moment from "moment";
 import BreadCrumb from "../components/BreadCrumb";
+import { useEffect } from "react";
 
 const Messages = () => {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 	const queryClient = useQueryClient();

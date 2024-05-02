@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { gigReducer, INITIAL_STATE } from "../../reducers/gigReducer.js";
 import upload from "../../utils/upload";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -8,6 +8,11 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import BreadCrumb from "../components/BreadCrumb.jsx";
 
 const Add = () => {
+	//SCROLL TO TOP
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const [singleFile, setSingleFile] = useState(undefined);
 	const [files, setFiles] = useState([]);
 	const [uploading, setUploading] = useState(false);
